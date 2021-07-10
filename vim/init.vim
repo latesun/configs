@@ -1,13 +1,4 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" INIT
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-    silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync | source ~/.config/nvim/init.vim
-endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGINS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -48,6 +39,9 @@ Plug 'easymotion/vim-easymotion'
 " Go plugin
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
+" C/C++/Proto plugin
+Plug 'rhysd/vim-clang-format'
+
 " Code commentary
 Plug 'tpope/vim-commentary'
 
@@ -75,6 +69,9 @@ Plug 'mbbill/undotree'
 " Translator
 Plug 'ianva/vim-youdao-translater'
 
+" PlantUML
+Plug 'aklt/plantuml-syntax'
+
 call plug#end()
 
 
@@ -97,10 +94,11 @@ set colorcolumn=81
 
 " Enable auto indent
 set autoindent
-set cindent
-set tabstop=4
-set shiftwidth=4
+set smartindent
 filetype indent on
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+autocmd FileType python,c,cpp,shell,sh,bash,vim,make set sts=4 tabstop=4
+autocmd FileType javascript,html,css,xml,yaml,yml set sw=2
 
 " Enable syntax highlight
 syntax on
@@ -162,7 +160,7 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 nmap ss <Plug>(easymotion-s2)
 
 " Open git-blame plugin, to avoid other plugin cover
-nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
+nnoremap <leader>s :<C-u>call gitblame#echo()<CR>
 
 " Vim-go
 let g:go_def_mode='gopls'
@@ -177,11 +175,14 @@ let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
 let g:go_highlight_function_calls = 1
-let g:syntastic_go_checkers = ['golint', 'govet', 'golangci-lint']
+let g:syntastic_go_checkers = ['golangci-lint']
 autocmd BufWritePre *.go :GoImports
 
 " Vim-interestingwords
 let g:interestingWordsRandomiseColors = 1
+
+" Format C/C++/Proto
+nnoremap <leader>f :ClangFormat<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -199,6 +200,9 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" Cancel highlight
+nnoremap <esc> :noh<return><esc>
 
 " Open buffers
 nnoremap <leader>b :Buffers<cr>
@@ -228,13 +232,10 @@ noremap <leader>yd :<C-u>Yde<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " coc
-let g:coc_global_extensions = ["coc-json", "coc-yaml", "coc-prettier", "coc-clangd", "coc-explorer"]
+let g:coc_global_extensions = ["coc-prettier", "coc-explorer"]
+inoremap <silent><expr> <c-y> pumvisible() ? coc#_select_confirm() : "\<c-y>"
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-command! -nargs=0 Format :call CocAction('format')
-
-" Format C/C++/Proto
-nnoremap <leader>f :ClangFormat<CR>
 
 nnoremap <silent><nowait> <space>e :<C-u>CocList extensions<cr>
 
