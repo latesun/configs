@@ -1,18 +1,23 @@
 .PHONY: ubuntu.tools
 ubuntu.tools: ubuntu.base ubuntu.tmux ubuntu.nvim ubuntu.go ubuntu.lazygit
 
+.PHONY: ubuntu.base
 ubuntu.base:
-	@echo "[INFO]: install tools for ubuntu"
 	sudo apt update
 ifeq (, $(shell type curl))
 	@echo "[INFO]: install curl..."
 	sudo apt install -y curl
 	@echo "[INFO]: install curl finished."
 endif
-ifeq (, $(shell type sshd))
+ifeq (, $(shell type mosh))
 	@echo "[INFO]: install openssh-server..."
 	sudo apt install -y openssh-server 
 	@echo "[INFO]: install openssh-server finished."
+endif
+ifeq (, $(shell type mosh))
+	@echo "[INFO]: install mosh..."
+	sudo apt install -y mosh
+	@echo "[INFO]: install mosh finished."
 endif
 ifeq (, $(shell type exa))
 	@echo "[INFO]: install exa..."

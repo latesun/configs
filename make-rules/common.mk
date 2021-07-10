@@ -1,3 +1,6 @@
+tpm = $(HOME)/.tmux/plugins/tpm
+zinit = $(HOME)/.zinit
+
 .PHONY: common.fasd
 common.fasd:
 	@echo "[INFO]: check fasd..."
@@ -7,16 +10,14 @@ ifeq (, $(shell type fasd))
 	@echo "[INFO]: install fasd finished."
 endif
 
-tpm := $(HOME)/.tmux/plugins/tpm
 .PHONY: common.tpm
 common.tpm:
 ifeq (, $(wildcard $(tpm)))
-	mkdir -p tmp
 	git clone https://github.com.cnpmjs.org/tmux-plugins/tpm $(tpm)
 	cp tmux.conf ~/.tmux.conf
 endif
 
-zinit := $(HOME)/.zinit
+.PHONY: common.zinit
 common.zinit:
 ifeq (, $(wildcard $(zinit)))
 	@echo "[INFO]: zinit is not exist"
