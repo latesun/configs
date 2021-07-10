@@ -1,0 +1,21 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "json",
+    "markdown",
+    "yaml",
+    "yml",
+    "sql",
+    "python",
+    "c",
+    "cpp"
+  ],
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "trace.server": "verbose",
+      "filetypes": ["go"]
+    }
+  },
+  "explorer.icon.enableNerdfont": true
+}
