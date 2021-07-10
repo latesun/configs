@@ -1,5 +1,8 @@
 .PHONY: ubuntu.tools
-ubuntu.tools: ubuntu.base ubuntu.tmux ubuntu.nvim ubuntu.go ubuntu.lazygit
+ubuntu.tools: ubuntu.base \
+	ubuntu.tmux ubuntu.nvim \
+	ubuntu.go ubuntu.lazygit \
+	ubuntu.kubectl ubuntu.zsh
 
 .PHONY: ubuntu.base
 ubuntu.base:
@@ -100,5 +103,16 @@ ifeq (, $(shell type zsh))
 endif
 ifeq (, $(wildcard $(zshrc)))
 	cp zshrc/ubuntu.zsh $(zshrc)
-	chsh -s $$(which zsh)
+	chsh -s $(shell which zsh)
+endif
+
+.PHONY: ubuntu.kubectl
+ubuntu.kubectl:
+ifeq (, $(shell type kubectl))
+	@echo "[INFO]: install kubectl..."
+	curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | sudo apt-key add -
+	echo "deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main" | \
+		sudo tee /etc/apt/sources.list.d/kubernetes.list
+	sudo apt install -y kubectl
+	@echo "[INFO]: install kubectl finished."
 endif
