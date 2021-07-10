@@ -163,19 +163,15 @@ nmap ss <Plug>(easymotion-s2)
 nnoremap <leader>s :<C-u>call gitblame#echo()<CR>
 
 " Vim-go
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
 let g:go_fmt_command = "goimports"
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
-let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
 let g:go_highlight_function_calls = 1
-let g:syntastic_go_checkers = ['golangci-lint']
+let g:syntastic_go_checkers = ['golint', 'govet', 'golangci-lint']
 autocmd BufWritePre *.go :GoImports
 
 " Vim-interestingwords
