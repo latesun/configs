@@ -23,3 +23,9 @@ common.zinit:
 ifeq (, $(wildcard $(zinit)))
 	@echo "[INFO]: zinit is not exist"
 endif
+
+.PHONY: github.host
+github.host:
+ifeq (, $(shell cat $(hosts) | grep $(raw)))
+	echo "199.232.68.133  raw.githubusercontent.com" | sudo tee -a $(hosts)
+endif
