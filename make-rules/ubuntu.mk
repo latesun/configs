@@ -39,6 +39,17 @@ ifeq (, $(shell type fzf))
 	sudo apt install -y fzf 
 	@echo "[INFO]: install fzf finished."
 endif
+ifeq (, $(shell type v2ray))
+	@echo "[INFO]: install v2ray..."
+	sudo apt-get install -y v2ray
+	@echo "[INFO]: install v2ray finished."
+endif
+
+ifeq (, $(shell type ctags))
+	@echo "[INFO]: install ctags..."
+	sudo apt install universal-ctags
+	@echo "[INFO]: install ctags finished."
+endif
 
 .PHONY: ubuntu.tmux
 ubuntu.tmux: common.tpm
@@ -79,4 +90,15 @@ ifeq (, $(shell type lazygit))
 	sudo add-apt-repository ppa:lazygit-team/release
 	sudo apt-get update && sudo apt-get install -y lazygit
 	@echo "[INFO]: install lazygit finished."
+endif
+
+.PHONY: ubuntu.zsh
+ifeq (, $(shell type zsh))
+	@echo "[INFO]: install zsh..."
+	sudo apt install -y zsh
+	@echo "[INFO]: install zsh finished."
+endif
+ifeq (, $(wildcard $(zshrc)))
+	cp zshrc/ubuntu.zsh $(zshrc)
+	chsh -s $$(which zsh)
 endif

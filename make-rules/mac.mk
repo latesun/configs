@@ -41,3 +41,13 @@ ifeq (, $(shell type tmux))
 	@echo "[INFO]: install tmux..."
 	brew install --HEAD tmux
 endif
+
+.PHONY: mac.zsh
+mac.zsh:
+ifeq (, $(shell type zsh))
+	@echo "[INFO]: install zsh..."
+	brew install --HEAD zsh
+endif
+ifeq (, $(wildcard $(zshrc)))
+	cp zshrc/mac.zsh $(zshrc)
+endif

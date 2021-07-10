@@ -1,5 +1,6 @@
 tpm = $(HOME)/.tmux/plugins/tpm
 zinit = $(HOME)/.zinit
+zshrc = $(HOME)/.zshrc
 
 .PHONY: common.fasd
 common.fasd:
