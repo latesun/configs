@@ -33,6 +33,11 @@ ifeq (, $(shell type kubectl))
 	brew install kubectl kubecolor
 	@echo "[INFO]: install kubectl finished."
 endif
+ifeq (, $(shell type tldr))
+	@echo "[INFO]: install tealdeer..."
+	brew install tealdeer
+	@echo "[INFO]: install tealdeer finished."
+endif
 
 .PHONY: mac.nvim
 mac.nvim:
