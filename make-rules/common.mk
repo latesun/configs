@@ -1,6 +1,8 @@
 tpm = $(HOME)/.tmux/plugins/tpm
 zinit = $(HOME)/.zinit
 zshrc = $(HOME)/.zshrc
+hosts = /etc/hosts
+raw = raw.githubusercontent.com
 
 .PHONY: common.fasd
 common.fasd:
@@ -21,7 +23,10 @@ endif
 .PHONY: common.zinit
 common.zinit:
 ifeq (, $(wildcard $(zinit)))
-	@echo "[INFO]: zinit is not exist"
+	@echo "[INFO]: install zinit..."
+	@mkdir $(zinit)
+	git clone --depth=1 https://github.com.cnpmjs.org/zdharma/zinit.git $(zinit)/bin
+	@echo "[INFO]: install zinit finished."
 endif
 
 .PHONY: github.host

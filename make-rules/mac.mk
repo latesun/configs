@@ -30,20 +30,35 @@ ifeq (, $(shell type go))
 endif
 ifeq (, $(shell type kubectl))
 	@echo "[INFO]: install kubectl..."
-	brew install kubectl kubecolor
+	brew install kubectl
 	@echo "[INFO]: install kubectl finished."
+endif
+ifeq (, $(shell type kubecolor))
+	@echo "[INFO]: install kubecolor..."
+	brew install dty1er/tap/kubecolor
+	@echo "[INFO]: install kubecolor finished."
 endif
 ifeq (, $(shell type tldr))
 	@echo "[INFO]: install tealdeer..."
 	brew install tealdeer
 	@echo "[INFO]: install tealdeer finished."
 endif
+ifeq (, $(shell type lazygit))
+	@echo "[INFO]: install lazygit..."
+	brew install lazygit
+	@echo "[INFO]: install lazygit finished."
+endif
+ifeq (, $(shell type highlight))
+	@echo "[INFO]: install highlight..."
+	brew install highlight
+	@echo "[INFO]: install highlight finished."
+endif
 
 .PHONY: mac.nvim
-mac.nvim:
+mac.nvim: vim.full
 ifeq (, $(shell type node))
 	@echo "[INFO]: install nodejs..."
-	curl -sL install-node.now.sh/lts | bash
+	brew install nodejs
 	npm config set registry https://registry.npm.taobao.org
 	@echo "[INFO]: install nodejs finished."
 endif
@@ -62,13 +77,28 @@ ifeq (, $(shell type tmux))
 endif
 
 .PHONY: mac.zsh
-mac.zsh:
+mac.zsh: common.zinit
 ifeq (, $(shell type zsh))
 	@echo "[INFO]: install zsh..."
 	brew install --HEAD zsh
 	@echo "[INFO]: install zsh finished."
 endif
 ifeq (, $(wildcard $(zshrc)))
-	cp zshrc/mac.zsh $(zshrc)
+	cp zsh/mac.zsh $(zshrc)
 	chsh -s $(shell which zsh)
+endif
+
+.PHONY: mac.dbs
+mac.dbs:
+ifeq (, $(shell type redis))
+	@echo "[INFO]: install redis..."
+	brew install redis
+	brew services start redis
+	@echo "[INFO]: install redis finished."
+endif
+ifeq (, $(shell type pgcli))
+	@echo "[INFO]: install postgresql..."
+	brew install postgresql pgcli
+	brew services start postgresql
+	@echo "[INFO]: install postgresql finished."
 endif

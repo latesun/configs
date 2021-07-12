@@ -18,5 +18,5 @@ ifeq (, $(wildcard $(plug.vim)))
 endif
 ifeq (, $(wildcard $(nvim)))
 	mkdir -p $(nvim)
-	cp vim/{init.vim,coc-settings.json} $(nvim)/init.vim
+	cp vim/{init.vim,coc-settings.json} $(nvim)
 endif

@@ -31,7 +31,7 @@ bindkey "^n" history-substring-search-down
 ## 1.1 Select default editor
 export EDITOR=nvim
 ## 3.2 Go
-export GOPATH=$HOME/workspace/go
+export GOPATH=$HOME/workspaces/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 
