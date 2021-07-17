@@ -53,6 +53,21 @@ ifeq (, $(shell type highlight))
 	brew install highlight
 	@echo "[INFO]: install highlight finished."
 endif
+ifeq (, $(shell type onefetch))
+	@echo "[INFO]: install onefetch..."
+	brew install onefetch
+	@echo "[INFO]: install onefetch finished."
+endif
+ifeq (, $(shell type cloc))
+	@echo "[INFO]: install cloc..."
+	brew install cloc
+	@echo "[INFO]: install cloc finished."
+endif
+ifeq (, $(shell type k9s))
+	@echo "[INFO]: install k9s..."
+	brew install k9s
+	@echo "[INFO]: install k9s finished."
+endif
 
 .PHONY: mac.nvim
 mac.nvim: vim.full
