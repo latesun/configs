@@ -94,11 +94,11 @@ set colorcolumn=81
 
 " Enable auto indent
 set autoindent
-set smartindent
+set tabstop=4
+set shiftwidth=4
 filetype indent on
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
-autocmd FileType python,c,cpp,shell,sh,bash,vim,make set sts=4 tabstop=4
-autocmd FileType javascript,html,css,xml,yaml,yml set sw=2
+autocmd FileType javascript,json,html,css,xml,yaml,yml set tabstop=2 shiftwidth=2
 
 " Enable syntax highlight
 syntax on
