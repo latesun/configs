@@ -48,8 +48,8 @@ alias ranger="TERM=xterm ranger"
 alias spy="when-changed -r -v -1 -s"
 alias python=python3
 ## 4.2 kubectl get resource
-alias kubectl="kubecolor"
-alias k="kubecolor"
+alias kubectl=kubecolor
+compdef kubecolor=kubectl
 alias kn="kubectl get nodes -o wide"
 alias kp="kubectl get pods -o wide"
 alias kd="kubectl get deployment -o wide"
@@ -60,21 +60,13 @@ alias kdd="kubectl describe deployment"
 alias kds="kubectl describe service"
 alias kdn="kubectl describe node"
 
+
 ## 4.4 Customize
-alias gd="sshpass -p password ssh -o StrictHostKeyChecking=no user@gmail.com"
-alias mgo-dev="mongo admin -u user -p password --host 127.0.0.1:27017"
-alias rds-dev="redis-cli -h 127.0.0.1 -p 6379 -a password"
+alias rds="redis-cli -h 127.0.0.1 -p 6379"
 
 #  5. Third Party Plugins
-## 5.1 Fasd
-eval "$(fasd --init auto)"
-fasd_cache="$HOME/.fasd-init-zsh"
-if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-    fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install >| "$fasd_cache"
-fi
-source "$fasd_cache"
-unset fasd_cache
-alias j="fasd_cd -d"
+## 5.1 Zoxide
+eval "$(zoxide init zsh)"
 ## 5.2 Fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
