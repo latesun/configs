@@ -45,10 +45,18 @@ vim.o.spell = true
 vim.o.spelllang = "en_us,cjk"
 -- 设定自动缩进的策略为 plugin
 vim.o.filetype = "plugin"
+vim.o.diffopt = "vertical"
 
 vim.cmd([[
   augroup yaml_like
     autocmd!
     autocmd BufNewFile,BufRead *.yml.example set filetype=yaml
+  augroup end
+]])
+
+vim.cmd([[
+  augroup plantuml_like
+    autocmd!
+    autocmd BufNewFile,BufRead *.puml set filetype=plantuml
   augroup end
 ]])

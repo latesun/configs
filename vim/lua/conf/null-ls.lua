@@ -7,21 +7,14 @@ local sources = {
 	formatting.goimports,
 	formatting.prettier,
 	formatting.taplo,
-	formatting.rustfmt.with({
-		extra_args = { "--edition=2021" },
-	}),
+	formatting.buf,
 }
 
 null_ls.setup({
 	sources = sources,
 	on_attach = function(client)
-		if client.resolved_capabilities.document_formatting then
-			vim.cmd([[
-            augroup LspFormatting
-                autocmd! * <buffer>
-                autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-            augroup END
-            ]])
+		if client.server_capabilities.documentFormattingProvider then
+			vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]])
 		end
 	end,
 })
