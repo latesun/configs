@@ -1,0 +1,24 @@
+[battery]
+full_symbol = "🔋 "
+charging_symbol = "⚡️ "
+discharging_symbol = "💀 "
+
+[hostname]
+ssh_only = false
+format = "[$ssh_symbol](bold blue) on [$hostname](bold red) "
+disabled = false
+
+[shell]
+style = "cyan bold"
+disabled = false
+
+[aws]
+disabled = true
+
+[time]
+disabled = false
+format = '🕙[\[ $time \]]($style) '
+time_format = "%T"
+
+[character]
+vicmd_symbol = "[V](bold green) "
