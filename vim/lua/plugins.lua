@@ -15,7 +15,7 @@ packer.startup({
         use({
             "goolord/alpha-nvim",
             config = function()
-                require("conf.alpha")
+                require("alpha").setup(require("alpha.themes.startify").config)
             end,
         })
 
@@ -54,27 +54,29 @@ packer.startup({
         -- telescope
         use({
             "nvim-telescope/telescope.nvim",
-            requires = {
-                { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-            },
             config = function()
                 require("conf.telescope")
             end,
         })
 
-        -- lsp easy installer
+        -- lsp
         use({
-            "williamboman/nvim-lsp-installer",
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
+            "neovim/nvim-lspconfig",
+            "tami5/lspsaga.nvim", -- ui
+        })
+
+        -- format
+        use({
+            "jose-elias-alvarez/null-ls.nvim",
             config = function()
-                require("conf.nvim-lsp-installer")
+                require("conf.null-ls")
             end,
         })
 
-        -- base lsp
-        use("neovim/nvim-lspconfig")
-
-        -- lsp ui
-        use("tami5/lspsaga.nvim")
+        -- neovim development tool
+        use("folke/neodev.nvim")
 
         -- completion
         use({
@@ -106,14 +108,6 @@ packer.startup({
             end,
         })
 
-        -- format
-        use({
-            "jose-elias-alvarez/null-ls.nvim",
-            config = function()
-                require("conf.null-ls")
-            end,
-        })
-
         -- tags
         use({
             "simrat39/symbols-outline.nvim",
@@ -122,7 +116,7 @@ packer.startup({
             end,
         })
 
-        use("lfv89/vim-interestingwords")
+        use("leisiji/interestingwords.nvim")
 
         -- git
         use({
@@ -163,11 +157,18 @@ packer.startup({
             end,
         })
 
-        -- easymontion
+        -- easy montion
         use({
-            "phaazon/hop.nvim",
+            "ggandor/leap.nvim",
             config = function()
-                require("conf.hop")
+                require("leap").set_default_keymaps()
+            end,
+        })
+
+        use({
+            "ggandor/flit.nvim",
+            config = function()
+                require("flit").setup()
             end,
         })
 
@@ -175,33 +176,14 @@ packer.startup({
         use({
             "kevinhwang91/nvim-hlslens",
             config = function()
-                require("conf.nvim-hlslens")
+                require("hlslens").setup()
             end,
         })
 
         use({
             "yamatsum/nvim-cursorline",
             config = function()
-                require("nvim-cursorline").setup({
-                    cursorline = {
-                        enable = true,
-                        timeout = 1000,
-                        number = false,
-                    },
-                    cursorword = {
-                        enable = true,
-                        min_length = 3,
-                        hl = { underline = true },
-                    },
-                })
-            end,
-        })
-
-        -- find and replace
-        use({
-            "nvim-pack/nvim-spectre",
-            config = function()
-                require("conf.nvim-spectre")
+                require("nvim-cursorline").setup()
             end,
         })
     end,
@@ -221,3 +203,5 @@ vim.cmd([[
     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
   augroup end
 ]])
+
+require("conf.mason")

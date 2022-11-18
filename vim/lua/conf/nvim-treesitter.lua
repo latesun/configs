@@ -1,5 +1,15 @@
 require("nvim-treesitter.configs").setup({
-    ensure_installed = { "go", "lua", "rust", "solidity", "json", "yaml", "gomod", "c", "cpp" },
+    ensure_installed = {
+        "go",
+        "lua",
+        "rust",
+        "solidity",
+        "json",
+        "yaml",
+        "gomod",
+        "c",
+        "python",
+    },
     indent = {
         enable = true,
     },

@@ -1,8 +1,10 @@
 vim.cmd([[
-	autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)
+	autocmd BufWritePre *.rs lua vim.lsp.buf.format(nil, 200)
 ]])
 
-return {
+local base = require("lsp.base")
+
+local opts = {
     settings = {
         ["rust-analyzer"] = {
             checkOnSave = {
@@ -16,4 +18,13 @@ return {
             },
         },
     },
+    on_attach = function(client, bufnr)
+        base.attach(bufnr)
+    end,
+}
+
+return {
+    on_setup = function(server)
+        server.setup(opts)
+    end,
 }

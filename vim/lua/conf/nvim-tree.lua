@@ -1,6 +1,6 @@
 require("nvim-tree").setup({
     view = {
-        width = 32,
+        width = 25,
     },
     diagnostics = {
         enable = true,
@@ -12,5 +12,3 @@ require("nvim-tree").setup({
         add_trailing = true,
     },
 })
-
-keymap.g("n", "<leader>e", "<cmd>NvimTreeFindFileToggle<CR>", keymap.opts)

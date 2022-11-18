@@ -1,6 +1,3 @@
 require("symbols-outline").setup({
-    width = 30,
-    show_numbers = true,
+    width = 25,
 })
-
-keymap.g("n", "tt", "<cmd>SymbolsOutline<CR>", keymap.opts)

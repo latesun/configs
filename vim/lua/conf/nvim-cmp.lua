@@ -11,7 +11,6 @@ cmp.setup({
         { name = "vsnip" },
         { name = "nvim_lsp" },
         { name = "path" },
-        { name = "cmdline" },
         { name = "spell" },
         { name = "buffer" },
         { name = "cmp_tabnine" },
@@ -42,11 +41,11 @@ cmp.setup({
     },
 
     mapping = {
-        ["<C-p>"] = cmp.mapping.select_prev_item(),
-        ["<C-n>"] = cmp.mapping.select_next_item(),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
-        ["<C-e>"] = cmp.mapping.abort(),
-        ["<Tab>"] = cmp.mapping(function(fallback)
+        ["<c-p>"] = cmp.mapping.select_prev_item(),
+        ["<c-n>"] = cmp.mapping.select_next_item(),
+        ["<cr>"] = cmp.mapping.confirm({ select = true }),
+        ["<c-e>"] = cmp.mapping.abort(),
+        ["<tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 local entry = cmp.get_selected_entry()
                 if not entry then

@@ -12,10 +12,3 @@ require("bufferline").setup({
         },
     },
 })
-
--- swith the previous buffer
-keymap.g("n", "<leader>bp", "<cmd>BufferLineCyclePrev<CR>", keymap.opts)
--- swith the next buffer
-keymap.g("n", "<leader>bn", "<cmd>BufferLineCycleNext<CR>", keymap.opts)
--- delete current buffer
-keymap.g("n", "<leader>bd", "<cmd>Bdelete!<CR>", keymap.opts)

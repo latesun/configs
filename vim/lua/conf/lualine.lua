@@ -4,7 +4,12 @@ require("lualine").setup({
     },
 
     sections = {
-        lualine_a = { { "fileformat", symbols = { unix = "" } } },
-        lualine_x = { "encoding", "filetype" },
+        lualine_a = {
+            "fileformat",
+        },
+        lualine_x = {
+            "encoding",
+            "filetype",
+        },
     },
 })
