@@ -1,4 +1,3 @@
--- https://github.com/sumneko/lua-language-server/wiki/Settings
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
@@ -7,7 +6,6 @@ local base = require("lsp.base")
 
 local opts = {
     capabilities = base.capabilities,
-
     settings = {
         Lua = {
             runtime = {

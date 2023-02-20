@@ -26,8 +26,8 @@ local servers = {
     gopls = require("lsp.gopls"),
     golangci_lint_ls = require("lsp.universal"),
     rust_analyzer = require("lsp.rust_analyzer"),
-    taplo = require("lsp.universal"),
-    yamlls = require("lsp.universal"),
+    taplo = require("lsp.taplo"),
+    yamlls = require("lsp.yamlls"),
     jsonls = require("lsp.universal"),
     bufls = require("lsp.universal"),
 }

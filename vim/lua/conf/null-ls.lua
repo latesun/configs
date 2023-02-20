@@ -4,11 +4,8 @@ local formatting = null_ls.builtins.formatting
 
 local sources = {
     formatting.stylua,
-    formatting.goimports,
     formatting.prettier,
-    formatting.taplo,
     formatting.buf,
-    formatting.autopep8,
 }
 
 null_ls.setup({
