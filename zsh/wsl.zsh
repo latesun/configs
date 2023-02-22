@@ -19,14 +19,17 @@ export PATH=$PATH:$GOBIN
 
 ## 2.3. Rust
 export RUSTUP_DIST_SERVER="https://rsproxy.cn"
-export RUSTUP_UPDATA_SERVER="https://rsproxy.cn"
+export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
 export CARGOBIN=$HOME/.cargo/bin
 export PATH=$PATH:$CARGOBIN
 
-## 2.4. Local bin
+## 2.4. Python
+export PYO3_PYTHON=/usr/bin/python3.10
+
+## 2.5. Local bin
 export PATH=$PATH:$HOME/.local/bin
 
-## 2.5. History
+## 2.6. History
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
@@ -49,6 +52,7 @@ export NVM_NODEJS_ORG_MIRROR=https://npmmirror.com/mirrors/node
 
 #  4. Shortcuts
 ## 4.1. Common
+alias jq=gojq
 alias vi=nvim
 alias vim=nvim
 alias lg=lazygit
@@ -58,6 +62,7 @@ alias ll="exa -alh --icons"
 alias tree="exa -T --icons"
 alias python="python3.10"
 alias python3="python3.10"
+alias sk="sk --preview='bat {} --color=always'"
 
 ## 4.2. kubectl get resource
 alias kubectl="kubecolor"
@@ -80,12 +85,12 @@ alias rds-dev="redis-cli -h 127.0.0.1 -p 6379 -a password"
 #  5. Customize Functions
 ## 5.1. WSL Proxy
 export win_host=$(cat /etc/resolv.conf | grep nameserver | awk '{ print $2 }')
-export proxy_port=7890
-export HTTP_PROXY="http://$win_host:$proxy_port"
+export win_port=7890
+export win_proxy="http://$win_host:$win_port"
 
 proxy() {
-	export http_proxy=$HTTP_PROXY
-	export https_proxy=$HTTP_PROXY
+	export http_proxy=$win_proxy
+	export https_proxy=$win_proxy
 }
 
 proxy_unset() {
@@ -94,8 +99,8 @@ proxy_unset() {
 }
 
 git_proxy() {
-	git config --global http.proxy $HTTP_PROXY
-	git config --global https.proxy $HTTP_PROXY
+	git config --global http.proxy $win_proxy
+	git config --global https.proxy $win_proxy
 }
 
 git_proxy_unset() {
