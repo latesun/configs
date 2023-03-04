@@ -59,3 +59,10 @@ vim.cmd([[
     autocmd BufNewFile,BufRead *.puml set filetype=plantuml
   augroup end
 ]])
+
+vim.cmd([[
+  augroup gomod
+    autocmd!
+    autocmd BufNewFile,BufRead *.mod set filetype=gomod
+  augroup end
+]])

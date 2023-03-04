@@ -15,9 +15,12 @@ require("mason-lspconfig").setup({
         "golangci_lint_ls",
         "rust_analyzer",
         "taplo",
-        "yamlls",
-        "jsonls",
         "bufls",
+        "tsserver",
+        "solidity",
+        "clangd",
+        "jsonls",
+        "pylsp",
     },
 })
 
@@ -27,9 +30,12 @@ local servers = {
     golangci_lint_ls = require("lsp.universal"),
     rust_analyzer = require("lsp.rust_analyzer"),
     taplo = require("lsp.taplo"),
-    yamlls = require("lsp.yamlls"),
-    jsonls = require("lsp.universal"),
     bufls = require("lsp.universal"),
+    tsserver = require("lsp.universal"),
+    solidity = require("lsp.solidity"),
+    clangd = require("lsp.clangd"),
+    jsonls = require("lsp.universal"),
+    pylsp = require("lsp.pylsp"),
 }
 
 for name, config in pairs(servers) do

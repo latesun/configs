@@ -9,6 +9,8 @@ require("nvim-treesitter.configs").setup({
         "gomod",
         "c",
         "python",
+        "javascript",
+        "typescript",
     },
     indent = {
         enable = true,

@@ -25,11 +25,6 @@ keymap.g("n", "<leader>u", "<cmd>PackerSync<cr>", keymap.opts)
 -- alpha
 keymap.g("n", "<leader>a", "<cmd>Alpha<cr>", keymap.opts)
 
---  buffer
-keymap.g("n", "<leader>bp", "<cmd>BufferLineCyclePrev<cr>", keymap.opts)
-keymap.g("n", "<leader>bn", "<cmd>BufferLineCycleNext<cr>", keymap.opts)
-keymap.g("n", "<leader>bd", "<cmd>Bdelete!<cr>", keymap.opts)
-
 -- hlslens
 keymap.g("n", "*", "*<cmd>lua require('hlslens').start()<cr>", keymap.opts)
 keymap.g("n", "#", "#<cmd>lua require('hlslens').start()<cr>", keymap.opts)

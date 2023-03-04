@@ -1,5 +1,5 @@
 vim.cmd([[
-	autocmd BufWritePre *.yaml lua vim.lsp.buf.format(nil, 200)
+	autocmd BufWritePre *.py lua vim.lsp.buf.format(nil, 200)
 ]])
 
 local base = require("lsp.base")

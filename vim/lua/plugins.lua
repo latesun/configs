@@ -43,14 +43,6 @@ packer.startup({
             end,
         })
 
-        -- buffer
-        use({
-            "akinsho/bufferline.nvim",
-            config = function()
-                require("conf.bufferline")
-            end,
-        })
-
         -- telescope
         use({
             "nvim-telescope/telescope.nvim",
@@ -86,10 +78,9 @@ packer.startup({
                 { "hrsh7th/cmp-path" },
                 { "hrsh7th/cmp-cmdline" },
                 { "hrsh7th/cmp-buffer" },
-                { "hrsh7th/vim-vsnip" }, -- snippet
                 { "onsails/lspkind-nvim" }, -- icon
                 { "f3fora/cmp-spell" },
-                { "tzachar/cmp-tabnine", run = "./install.sh" },
+                { "jcdickinson/codeium.nvim" },
             },
             config = function()
                 require("conf.nvim-cmp")

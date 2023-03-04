@@ -1,19 +1,14 @@
+require("codeium").setup({})
+
 local lspkind = require("lspkind")
 local cmp = require("cmp")
 cmp.setup({
-    snippet = {
-        expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body)
-        end,
-    },
-
     sources = cmp.config.sources({
-        { name = "vsnip" },
         { name = "nvim_lsp" },
         { name = "path" },
         { name = "spell" },
         { name = "buffer" },
-        { name = "cmp_tabnine" },
+        { name = "codeium" },
     }),
 
     formatting = {
